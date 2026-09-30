@@ -3,6 +3,8 @@ name: thinking-show-me
 description: "Explain the current topic using focused diagrams, diffs, or HTML. Use only when explicitly invoked as thinking-show-me or $thinking-show-me."
 ---
 
+Copy/paste from "https://github.com/humanlayer/skills/tree/main/plugins/show-me", because is really cool this skill, and I want to use it in my own project.
+
 Apply this skill only after the user explicitly invokes `thinking-show-me` or `$thinking-show-me`. Do not infer invocation from a request for a diagram, visualization, explanation, or HTML artifact.
 
 Help the user understand the current topic of conversation visually. Skip the preamble and keep prose brief. Pick the smallest view that makes the key point clear.
