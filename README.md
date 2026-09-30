@@ -6,9 +6,7 @@ The skills can be used individually. `thinking-orchestrate-to-plan` combines sev
 
 ## Background
 
-The thinking skills grew from techniques from documentation about "Pensamiento Crítico". Its lessons cover breaking down problems, distinguishing symptoms from causes, structuring ideas, writing clear instructions with CIRC, defining a good outcome, verifying information, detecting bias, generating ideas, and analyzing and synthesizing sources.
-
-This collection adapts those techniques into reusable Codex workflows. The planning, review, tracking, and Claude delegation skills extend that foundation for work with software and repositories. The original lesson documents are not included here.
+The thinking skills grew from techniques from I found on internet about "Critict Thinking". Its lessons cover breaking down problems, distinguishing symptoms from causes, structuring ideas, writing clear instructions with CIRC, defining a good outcome, verifying information, detecting bias, generating ideas, and analyzing and synthesizing sources.
 
 ## Get started
 
@@ -69,16 +67,31 @@ You can then ask Codex, for example:
 
 ## Dependencies and review routes
 
-Most skills work on their own. These workflows use other skills from this collection:
+`thinking-orchestrate-to-plan` follows one of these paths and stops after a reviewed plan:
 
-- `thinking-investigate-root-causes` needs a complete decomposition or equivalent causal model; `thinking-decompose-problem` can provide one.
-- `thinking-propose-solutions` needs a verified or probable causal model, or an equivalent account of the need and its constraints.
-- `thinking-orchestrate-to-plan` uses `thinking-land-to-earth` for features and `thinking-investigate-root-causes` for bugs. Both routes use `thinking-decompose-problem`, `thinking-propose-solutions`, `thinking-challenge-scope`, `plan-creation`, and a user-selected review route. The local route uses `plan-review`. Durable tracking with `thinking-track-investigation` is optional and requires approval for the record path.
-- `plan-agreement-review` uses `claude-code-reviewer`, `plan-critique-review`, `plan-creation`, and `plan-review`. It also requires an installed, authenticated Claude Code CLI. It sends the approved prompt and repository or plan material to Anthropic only after task-specific disclosure approval.
-- `claude-code-reviewer` requires an installed, authenticated Claude Code CLI and task-specific approval before sending material to Anthropic.
-- `thinking-track-investigation` runs its bundled script with Python 3 when initializing a record; the script uses the standard library.
+```mermaid
+flowchart TD
+  B["Bug report"] --> BD["thinking-decompose-problem"]
+  BD --> I["thinking-investigate-root-causes"]
+  I -->|Verified or probable cause| S["thinking-propose-solutions"]
 
-The local `plan-review` route does not require Claude. Skill instructions describe their own evidence, authorization, and stop rules; read a skill before using it in a workflow.
+  F["Feature idea"] --> G["thinking-land-to-earth"]
+  G -->|Confirmed idea card| FD["thinking-decompose-problem"]
+  FD -->|Established need and constraints| S
+
+  S -->|User selects direction| C["thinking-challenge-scope"]
+  C -->|User accepts scope| P["plan-creation"]
+  P --> R{"User selects review route"}
+  R -->|Fast Review| PR["plan-review"]
+  R -->|Agreement Review| AR["plan-agreement-review"]
+```
+
+| Review route | Dependencies and requirements |
+| --- | --- |
+| Fast Review | `plan-review` checks the plan locally and read-only. It completes the workflow only with a `ready` verdict. |
+| Agreement Review | `plan-agreement-review` uses `claude-code-reviewer`, `plan-critique-review`, `plan-creation`, and `plan-review`. It requires a named local plan, an installed and authenticated Claude Code CLI, and explicit approval for the material sent to Anthropic. |
+
+The skills also work individually when their inputs are available. `thinking-investigate-root-causes` needs a complete decomposition or equivalent causal model; `thinking-propose-solutions` needs a verified or probable causal model or an equivalent feature need. `thinking-track-investigation` is optional: record writes require approval for the exact path, and initialization uses its bundled Python 3 script.
 
 ## Contributing
 
