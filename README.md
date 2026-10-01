@@ -28,7 +28,7 @@ You can then ask Codex, for example:
 
 `thinking-land-to-earth` and `thinking-show-me` require explicit invocation. The other skills can be invoked by name when you want a particular workflow.
 
-## Skills
+## Skills Descriptions
 
 ### Understand and explore
 
@@ -65,7 +65,7 @@ You can then ask Codex, for example:
 | [`thinking-orchestrate-to-plan`](thinking-orchestrate-to-plan/SKILL.md) | Guide a bug or feature through investigation, decisions, planning, and a selected review route. |
 | [`claude-code-reviewer`](claude-code-reviewer/SKILL.md) | Delegate bounded read-only repository review to Claude Code. |
 
-## Dependencies and review routes
+## Orchestrate a plan
 
 `thinking-orchestrate-to-plan` follows one of these paths and stops after a reviewed plan:
 
