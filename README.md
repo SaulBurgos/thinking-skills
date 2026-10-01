@@ -32,38 +32,55 @@ You can then ask Codex, for example:
 
 ### Understand and explore
 
-| Skill | Use it to |
-| --- | --- |
-| [`thinking-align-context`](thinking-align-context/SKILL.md) | Inspect the goal and earlier context guiding the agent's response. |
-| [`thinking-analyze-transcript`](thinking-analyze-transcript/SKILL.md) | Extract topics, decisions, actions, open questions, and disagreements from a transcript. |
-| [`thinking-catch-me-up`](thinking-catch-me-up/SKILL.md) | Get a short brief on where a task stopped and what comes next. |
-| [`thinking-decompose-problem`](thinking-decompose-problem/SKILL.md) | Break a broad problem into factors, relationships, hypotheses, and priorities. |
-| [`thinking-evaluate-bias`](thinking-evaluate-bias/SKILL.md) | Examine framing, evidence, and omissions for representation, confirmation, or omission bias. |
-| [`thinking-evaluate-circ`](thinking-evaluate-circ/SKILL.md) | Check an instruction for Context, Intention, Restrictions, and Criteria for Success. |
-| [`thinking-expand-problem-space`](thinking-expand-problem-space/SKILL.md) | Explore one new angle through questions, perspective, analogy, or inversion. |
-| [`thinking-explain`](thinking-explain/SKILL.md) | Explain a difficult topic or artifact in plain language. |
-| [`thinking-land-to-earth`](thinking-land-to-earth/SKILL.md) | Turn a vague idea into a user-confirmed Grounded Idea Card. Explicit invocation required. |
-| [`thinking-show-me`](thinking-show-me/SKILL.md) | Explain the current topic with a focused diagram, diff, or HTML artifact. Explicit invocation required. |
+| Skill | Use it to | Use case |
+| --- | --- | --- |
+| [`thinking-align-context`](thinking-align-context/SKILL.md) | Inspect the goal and earlier context guiding the agent's response. | Check whether the agent is using an outdated requirement. |
+| [`thinking-analyze-transcript`](thinking-analyze-transcript/SKILL.md) | Extract topics, decisions, actions, open questions, and disagreements from a transcript. | Turn meeting notes into decisions and action items. |
+| [`thinking-catch-me-up`](thinking-catch-me-up/SKILL.md) | Get a short brief on where a task stopped and what comes next. | Resume a task after time away. |
+| [`thinking-decompose-problem`](thinking-decompose-problem/SKILL.md) | Break a broad problem into factors, relationships, hypotheses, and priorities. | Split an intermittent failure into possible causes. |
+| [`thinking-evaluate-bias`](thinking-evaluate-bias/SKILL.md) | Examine framing, evidence, and omissions for representation, confirmation, or omission bias. | Check whether a proposal ignores affected users. |
+| [`thinking-evaluate-circ`](thinking-evaluate-circ/SKILL.md) | Check an instruction for Context, Intention, Restrictions, and Criteria for Success. | Find missing success criteria in a task request. |
+| [`thinking-expand-problem-space`](thinking-expand-problem-space/SKILL.md) | Explore one new angle through questions, perspective, analogy, or inversion. | Generate questions before choosing a solution. |
+| [`thinking-explain`](thinking-explain/SKILL.md) | Explain a difficult topic or artifact in plain language. | Understand a complex design proposal. |
+| [`thinking-land-to-earth`](thinking-land-to-earth/SKILL.md) | Turn a vague idea into a user-confirmed Grounded Idea Card. Explicit invocation required. | Clarify what “make onboarding easier” means. |
+| [`thinking-show-me`](thinking-show-me/SKILL.md) | Explain the current topic with a focused diagram, diff, or HTML artifact. Explicit invocation required. | See how two workflow options differ. |
 
 ### Investigate and decide
 
-| Skill | Use it to |
-| --- | --- |
-| [`thinking-investigate-root-causes`](thinking-investigate-root-causes/SKILL.md) | Check causal hypotheses against evidence after decomposing a problem. |
-| [`thinking-propose-solutions`](thinking-propose-solutions/SKILL.md) | Compare evidence-grounded solution directions before planning. |
-| [`thinking-challenge-scope`](thinking-challenge-scope/SKILL.md) | Find the smallest safe version of a selected approach. |
-| [`thinking-track-investigation`](thinking-track-investigation/SKILL.md) | Maintain a durable investigation record and its next step. |
+| Skill | Use it to | Use case |
+| --- | --- | --- |
+| [`thinking-investigate-root-causes`](thinking-investigate-root-causes/SKILL.md) | Check causal hypotheses against evidence after decomposing a problem. | Test whether a timeout causes failed requests. |
+| [`thinking-propose-solutions`](thinking-propose-solutions/SKILL.md) | Compare evidence-grounded solution directions before planning. | Compare fixes after confirming the cause. |
+| [`thinking-challenge-scope`](thinking-challenge-scope/SKILL.md) | Find the smallest safe version of a selected approach. | Cut a proposed rollout to one useful phase. |
+| [`thinking-track-investigation`](thinking-track-investigation/SKILL.md) | Maintain a durable investigation record and its next step. | Save findings before handing off an investigation. |
 
 ### Plan and review
 
-| Skill | Use it to |
-| --- | --- |
-| [`plan-creation`](plan-creation/SKILL.md) | Draft an implementation-ready plan with success criteria, phases, and risks. |
-| [`plan-review`](plan-review/SKILL.md) | Validate a proposed plan against the current code before implementation. |
-| [`plan-critique-review`](plan-critique-review/SKILL.md) | Check feedback about a plan against repository evidence before revising it. |
-| [`plan-agreement-review`](plan-agreement-review/SKILL.md) | Seek plan agreement through local checks and a persistent Claude review loop. |
-| [`thinking-orchestrate-to-plan`](thinking-orchestrate-to-plan/SKILL.md) | Guide a bug or feature through investigation, decisions, planning, and a selected review route. |
-| [`claude-code-reviewer`](claude-code-reviewer/SKILL.md) | Delegate bounded read-only repository review to Claude Code. |
+| Skill | Use it to | Use case |
+| --- | --- | --- |
+| [`plan-creation`](plan-creation/SKILL.md) | Draft an implementation-ready plan with success criteria, phases, and risks. | Plan a feature before changing code. |
+| [`plan-review`](plan-review/SKILL.md) | Validate a proposed plan against the current code before implementation. | Check whether a migration plan fits the codebase. |
+| [`plan-critique-review`](plan-critique-review/SKILL.md) | Check feedback about a plan against repository evidence before revising it. | Verify a reviewer's claim about a missing dependency. |
+| [`plan-agreement-review`](plan-agreement-review/SKILL.md) | Seek plan agreement through local checks and a persistent Claude review loop. | Resolve substantive disagreements about a plan. |
+| [`thinking-orchestrate-to-plan`](thinking-orchestrate-to-plan/SKILL.md) | Guide a bug or feature through investigation, decisions, planning, and a selected review route. | Take a bug report through to a reviewed plan. |
+| [`claude-code-reviewer`](claude-code-reviewer/SKILL.md) | Delegate bounded read-only repository review to Claude Code. | Request an independent review of a proposed design. |
+
+## Use skills individually
+
+Each box can be a separate request. Start wherever you already have the required input; the dashed arrows suggest a useful next skill, not an automatic call.
+
+```mermaid
+flowchart TD
+  L["thinking-land-to-earth"] -. Confirmed idea .-> D["thinking-decompose-problem"]
+  D -. Bug hypotheses to verify .-> I["thinking-investigate-root-causes"]
+  D -. Established feature need and causal basis .-> S["thinking-propose-solutions"]
+  I -. Verified or probable cause .-> S
+  S -. You select a direction .-> C["thinking-challenge-scope"]
+  C -. You accept the scope .-> P["plan-creation"]
+  P -. Plan to check .-> R["plan-review"]
+```
+
+For example, after using `thinking-decompose-problem`, you can ask: “Use `$thinking-investigate-root-causes` with the decomposition above.” Other skills in the catalog can also be invoked on their own for explanation, bias checks, transcript analysis, tracking, or visual help.
 
 ## Orchestrate a plan
 
