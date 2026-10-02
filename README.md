@@ -32,38 +32,149 @@ You can then ask Codex, for example:
 
 ### Understand and explore
 
-| Skill | Use it to | Use case |
-| --- | --- | --- |
-| [`thinking-align-context`](thinking-align-context/SKILL.md) | Inspect the goal and earlier context guiding the agent's response. | Check whether the agent is using an outdated requirement. |
-| [`thinking-analyze-transcript`](thinking-analyze-transcript/SKILL.md) | Extract topics, decisions, actions, open questions, and disagreements from a transcript. | Turn meeting notes into decisions and action items. |
-| [`thinking-catch-me-up`](thinking-catch-me-up/SKILL.md) | Get a short brief on where a task stopped and what comes next. | Resume a task after time away. |
-| [`thinking-decompose-problem`](thinking-decompose-problem/SKILL.md) | Break a broad problem into factors, relationships, hypotheses, and priorities. | Split an intermittent failure into possible causes. |
-| [`thinking-evaluate-bias`](thinking-evaluate-bias/SKILL.md) | Examine framing, evidence, and omissions for representation, confirmation, or omission bias. | Check whether a proposal ignores affected users. |
-| [`thinking-evaluate-circ`](thinking-evaluate-circ/SKILL.md) | Check an instruction for Context, Intention, Restrictions, and Criteria for Success. | Find missing success criteria in a task request. |
-| [`thinking-expand-problem-space`](thinking-expand-problem-space/SKILL.md) | Explore one new angle through questions, perspective, analogy, or inversion. | Generate questions before choosing a solution. |
-| [`thinking-explain`](thinking-explain/SKILL.md) | Explain a difficult topic or artifact in plain language. | Understand a complex design proposal. |
-| [`thinking-land-to-earth`](thinking-land-to-earth/SKILL.md) | Turn a vague idea into a user-confirmed Grounded Idea Card. Explicit invocation required. | Clarify what “make onboarding easier” means. |
-| [`thinking-show-me`](thinking-show-me/SKILL.md) | Explain the current topic with a focused diagram, diff, or HTML artifact. Explicit invocation required. | See how two workflow options differ. |
+#### [`thinking-align-context`](thinking-align-context/SKILL.md)
+
+- **What it does:** Shows which goal and earlier context guide the current response.
+- **What you get:** A short alignment report with gaps you can correct.
+- **When to use it:** You suspect the agent is following an outdated requirement.
+- **What it reads:** The current conversation; earlier history or artifacts only when requested.
+
+#### [`thinking-analyze-transcript`](thinking-analyze-transcript/SKILL.md)
+
+- **What it does:** Extracts the important content of a meeting or discussion.
+- **What you get:** Topics, decisions, action items, open questions, risks, and disagreements.
+- **When to use it:** You need to turn a transcript into a usable summary.
+- **What it reads:** The supplied transcript, including available speakers and timestamps.
+
+#### [`thinking-catch-me-up`](thinking-catch-me-up/SKILL.md)
+
+- **What it does:** Reconstructs where a task stopped.
+- **What you get:** A short brief covering progress, stopping point, and next action.
+- **When to use it:** You are returning to a task after time away.
+- **What it reads:** The conversation; narrow current checks only if you request live status.
+
+#### [`thinking-decompose-problem`](thinking-decompose-problem/SKILL.md)
+
+- **What it does:** Separates a broad problem into factors, relationships, and hypotheses.
+- **What you get:** A problem map, provisional causal chains, priorities, and gaps.
+- **When to use it:** You need to understand an unclear issue before investigating causes.
+- **What it reads:** Your problem description and limited relevant read-only evidence.
+
+#### [`thinking-evaluate-bias`](thinking-evaluate-bias/SKILL.md)
+
+- **What it does:** Checks framing and evidence for representation, confirmation, and omission bias.
+- **What you get:** Supported bias findings, their effect, and small balancing actions.
+- **When to use it:** A proposal or conclusion may overlook people or contrary evidence.
+- **What it reads:** The work being evaluated and evidence needed to check each finding.
+
+#### [`thinking-evaluate-circ`](thinking-evaluate-circ/SKILL.md)
+
+- **What it does:** Checks an instruction for Context, Intention, Restrictions, and Criteria for Success.
+- **What you get:** A CIRC assessment, material gaps, and clarification questions.
+- **When to use it:** A task request may be missing constraints or success criteria.
+- **What it reads:** The instruction and available surrounding context.
+
+#### [`thinking-expand-problem-space`](thinking-expand-problem-space/SKILL.md)
+
+- **What it does:** Explores one new angle using questions, perspective, analogy, or inversion.
+- **What you get:** A focused exploration and short summary.
+- **When to use it:** You want to widen your thinking before choosing an answer.
+- **What it reads:** The problem, goal, or opportunity and the context you provide.
+
+#### [`thinking-explain`](thinking-explain/SKILL.md)
+
+- **What it does:** Explains a complex topic or artifact in plain language.
+- **What you get:** A practical explanation, with a small visual when useful.
+- **When to use it:** You need to understand a design, plan, or technical concept.
+- **What it reads:** The topic or artifact and any material source content.
+
+#### [`thinking-land-to-earth`](thinking-land-to-earth/SKILL.md)
+
+- **What it does:** Clarifies a vague idea into a concrete, user-confirmed concept.
+- **What you get:** A Grounded Idea Card, or a draft if important gaps remain.
+- **When to use it:** You have an idea such as “make onboarding easier” but no defined outcome. Invoke it explicitly.
+- **What it reads:** Your idea and directly relevant facts found through bounded read-only discovery.
+
+#### [`thinking-show-me`](thinking-show-me/SKILL.md)
+
+- **What it does:** Makes the current topic easier to see through a focused visual.
+- **What you get:** A diagram, diff, pseudocode, call tree, or HTML artifact as appropriate.
+- **When to use it:** You want to see a workflow or comparison. Invoke it explicitly.
+- **What it reads:** The current topic and relevant source or artifact details.
 
 ### Investigate and decide
 
-| Skill | Use it to | Use case |
-| --- | --- | --- |
-| [`thinking-investigate-root-causes`](thinking-investigate-root-causes/SKILL.md) | Check causal hypotheses against evidence after decomposing a problem. | Test whether a timeout causes failed requests. |
-| [`thinking-propose-solutions`](thinking-propose-solutions/SKILL.md) | Compare evidence-grounded solution directions before planning. | Compare fixes after confirming the cause. |
-| [`thinking-challenge-scope`](thinking-challenge-scope/SKILL.md) | Find the smallest safe version of a selected approach. | Cut a proposed rollout to one useful phase. |
-| [`thinking-track-investigation`](thinking-track-investigation/SKILL.md) | Maintain a durable investigation record and its next step. | Save findings before handing off an investigation. |
+#### [`thinking-investigate-root-causes`](thinking-investigate-root-causes/SKILL.md)
+
+- **What it does:** Tests causal hypotheses against collected evidence.
+- **What you get:** Verified, probable, rejected, or unresolved findings and a causal model when useful.
+- **When to use it:** You have decomposed a problem and need to establish why it happens.
+- **What it reads:** A full decomposition or equivalent analysis, evidence, and relevant read-only sources.
+
+#### [`thinking-propose-solutions`](thinking-propose-solutions/SKILL.md)
+
+- **What it does:** Compares solution directions grounded in a causal model.
+- **What you get:** Options, tradeoffs, a minimum safe direction, and a decision boundary.
+- **When to use it:** You know the likely cause or feature need and must choose an approach.
+- **What it reads:** The causal model, priorities, constraints, and relevant decision evidence.
+
+#### [`thinking-challenge-scope`](thinking-challenge-scope/SKILL.md)
+
+- **What it does:** Finds a smaller version of a selected approach that preserves its purpose.
+- **What you get:** A lean alternative, protected core, remaining risks, and recommendation.
+- **When to use it:** A proposed solution or plan may be larger than necessary.
+- **What it reads:** The selected approach, accepted outcome, constraints, and targeted evidence.
+
+#### [`thinking-track-investigation`](thinking-track-investigation/SKILL.md)
+
+- **What it does:** Maintains a durable investigation record across work sessions.
+- **What you get:** An orientation, updated record, checkpoint, child record, or closure.
+- **When to use it:** Findings and next steps need to survive a handoff.
+- **What it reads:** The canonical record, its navigation file when present, and supplied updates. Record writes require approval.
 
 ### Plan and review
 
-| Skill | Use it to | Use case |
-| --- | --- | --- |
-| [`plan-creation`](plan-creation/SKILL.md) | Draft an implementation-ready plan with success criteria, phases, and risks. | Plan a feature before changing code. |
-| [`plan-review`](plan-review/SKILL.md) | Validate a proposed plan against the current code before implementation. | Check whether a migration plan fits the codebase. |
-| [`plan-critique-review`](plan-critique-review/SKILL.md) | Check feedback about a plan against repository evidence before revising it. | Verify a reviewer's claim about a missing dependency. |
-| [`plan-agreement-review`](plan-agreement-review/SKILL.md) | Seek plan agreement through local checks and a persistent Claude review loop. | Resolve substantive disagreements about a plan. |
-| [`thinking-orchestrate-to-plan`](thinking-orchestrate-to-plan/SKILL.md) | Guide a bug or feature through investigation, decisions, planning, and a selected review route. | Take a bug report through to a reviewed plan. |
-| [`claude-code-reviewer`](claude-code-reviewer/SKILL.md) | Delegate bounded read-only repository review to Claude Code. | Request an independent review of a proposed design. |
+#### [`plan-creation`](plan-creation/SKILL.md)
+
+- **What it does:** Turns an agreed goal into an implementation-ready plan.
+- **What you get:** Scope, success criteria, phases, validation, risks, and assumptions.
+- **When to use it:** You are ready to plan a feature or fix before coding.
+- **What it reads:** Your goal, repository rules, existing patterns, code, and relevant dependencies.
+
+#### [`plan-review`](plan-review/SKILL.md)
+
+- **What it does:** Checks a proposed plan against the current codebase.
+- **What you get:** A readiness verdict and evidence-backed findings.
+- **When to use it:** You want to know whether a plan is safe to implement.
+- **What it reads:** The full plan, repository instructions, relevant code, tests, and schemas.
+
+#### [`plan-critique-review`](plan-critique-review/SKILL.md)
+
+- **What it does:** Tests review feedback against repository evidence before changing a plan.
+- **What you get:** A claim-by-claim assessment and justified plan changes when authorized.
+- **When to use it:** A reviewer challenges a plan with claims that need verification.
+- **What it reads:** The plan, critique, repository instructions, and relevant code or tests.
+
+#### [`plan-agreement-review`](plan-agreement-review/SKILL.md)
+
+- **What it does:** Runs local checks and a persistent Claude review loop on a plan.
+- **What you get:** An agreement report, readiness status, plan changes, and unresolved gaps.
+- **When to use it:** A complex plan needs an independent review and agreement. Sending material to Claude requires approval.
+- **What it reads:** One local Markdown plan, relevant repository evidence, and approved Claude review context.
+
+#### [`thinking-orchestrate-to-plan`](thinking-orchestrate-to-plan/SKILL.md)
+
+- **What it does:** Guides a bug or feature through investigation, decisions, planning, and review.
+- **What you get:** A reviewed implementation plan and readiness verdict, before implementation.
+- **When to use it:** You want one guided path from an initial problem or idea to a plan.
+- **What it reads:** Your context, relevant read-only evidence, workflow references, and selected review route.
+
+#### [`claude-code-reviewer`](claude-code-reviewer/SKILL.md)
+
+- **What it does:** Requests a bounded independent analysis from Claude Code.
+- **What you get:** Review findings or design feedback with evidence and uncertainties.
+- **When to use it:** You need a second opinion on a repository question. Sending material to Claude requires approval.
+- **What it reads:** The approved prompt and repository or artifact scope, plus applicable instructions.
 
 ## Use skills individually
 
